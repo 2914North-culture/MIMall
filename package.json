@@ -5,10 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve --mode=development",
     "test": "vue-cli-service serve --mode=test",
-    "build" : "vue-cli-service build --mode=production",
+    "build": "vue-cli-service build --mode=production",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": { 
+  "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
@@ -28,6 +28,7 @@
     "jsonp": "^0.2.1",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "mockjs": "^1.1.0",
     "qs": "^6.9.4",
     "vue-awesome-swiper": "^4.1.1",
     "vue-axios": "^2.1.5",
