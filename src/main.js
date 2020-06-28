@@ -4,15 +4,21 @@ import router from './router/index.js'
 import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios' // 帮我们把axios的作用域对象挂载到Vue实例上，方便我们用this调用
+import { Message } from 'element-ui';
+import VueLazyLoad from 'vue-lazyload'
+import VueCookie from 'vue-cookie';
 // 引入组件
 import App from './App.vue'
 import Env from './env.js'; // env.js是我们创建的环境变量的配置文件
-
-Vue.use(VueAxios,axios); // 这里的顺序不能交换
-Vue.config.productionTip = false // productionTip是生产模式下的提示信息，开发模式下默认是关闭的
+// 引入样式文件
+import Normalize from 'normalize.css'
+import '@/common/less/iconfont.less';
+import 'element-ui/lib/theme-chalk/index.css';
+// 引入脚本文件
+import '@/common/js/iconfont.js';
 
 // mock开关
-const mock = true;
+const mock = false;
 if(mock){
   /** 
    * 这里选用require引入的原因是：
@@ -43,11 +49,29 @@ axios.interceptors.response.use(function(config){
      *  -- 这里使用window.location.href跳转
      *  -- 项目是hash路由
      */
-    window.location.href = '/#/login';
+    if(location.hash != '#/index'){
+      window.location.href = '/#/userdeel/login';
+      return Promise.reject(res);
+    }
   }else{
-    alert(res.msg);
+    Message.warning(res.msg);
+    return Promise.reject(res);
   }
-})
+},(error)=>{
+  // 拦截的第二个函数是服务器响应500时的错误信息，或者可以理解为不是内部代码的错误信息
+  let res = error.response;
+  Message.error(res.data.message);
+  return Promise.reject(error);
+});
+
+Vue.use(VueAxios,axios); // 这里的顺序不能交换
+Vue.use(VueCookie);
+Vue.use(VueLazyLoad,{
+  error: '/imgs/detail/load-failure.jpg',
+  loading: '/imgs/loading-svg/loading-bars.svg',
+});
+Vue.prototype.$message = Message;
+Vue.config.productionTip = false // productionTip是生产模式下的提示信息，开发模式下默认是关闭的
 
 new Vue({
   router,

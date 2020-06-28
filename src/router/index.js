@@ -30,6 +30,23 @@ Vue.use(VueRouter);
     ]
   },
   {
+    path: '/userdeel',
+    name: 'userdeel',
+    component: () => import('../views/userDeel.vue'),
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('../components/common/LoginLayout.vue')
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('../components/common/RegisterLayout.vue')
+      },
+    ]
+  },
+  {
     path: '/cart',
     name: 'cart',
     component: () => import('../views/cart.vue')   
@@ -38,7 +55,7 @@ Vue.use(VueRouter);
     path: '/order',
     name: 'order',
     component: () => import('../views/order.vue'),
-    redirect: '/list',
+    redirect: '/order/list',
     children: [
       {
         path: 'list',

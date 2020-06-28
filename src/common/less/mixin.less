@@ -1,0 +1,12 @@
+.flex (@x: center,@y: center,@yc: space-between,@wrap: nowrap) {
+    display: flex;
+    justify-content: @x;
+    align-items: @y;
+    align-content: @yc;
+    flex-wrap: @wrap;
+}
+.wrap1 (@posWay: relative, @top: 50%, @transX: -50%, @transY: -50%) {
+    position: @posWay;
+    top: @top;
+    transform: translate(@transX,@transY)
+}

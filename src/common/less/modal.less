@@ -1,0 +1,111 @@
+@import './config.less';
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 52;
+    transition: 0.3s linear;
+    &.slide-enter-active{
+        .mask{
+            opacity: 0.5;
+        }
+        .modal-box{
+            top: 40%;
+        }
+    }
+    &.slide-leave-active{
+        .mask{
+            opacity: 0.5;
+        }
+        .modal-box{
+            top: -50%;
+        }
+    }
+    &.slide-enter{
+        .mask{
+            opacity: 0.5;
+        }
+        .modal-box{
+            top: -50%;
+        }
+    }
+    .mask{
+        width: 100%;
+        height: 100%;
+        background-color: @colorI;
+        opacity: 0.5;
+    }
+    .modal-box{
+        width: 660px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: @colorJ;
+        box-shadow: -1px -1px 5px rgba(0,0,0,0.3) inset;
+        opacity: 1;
+        transition: 0.5s;
+        .box-header{
+            height: 60px;
+            font-size: @fontI;
+            padding:0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .header-icon{
+                display: inline-block;
+                font-size: @fontE;
+                cursor: pointer;
+                transition: 0.5s ease;
+                &:hover{
+                    transform: scale(1.4);
+                    color: @colorA;
+                }
+            }
+        }
+        .box-body{
+            padding:42px 40px 54px;
+            font-size:14px;
+        }
+        .box-footer{
+            height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 15px 110px 0;
+            .btn-all{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                padding: 15px 110px 0;
+            }
+            .btn{
+                text-decoration: none;
+                color: @colorG;
+                display: inline-block;
+                width: 88px;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: @fontK;
+                border-radius: 4px;
+                transition: 0.4s;
+                &:hover{
+                    opacity: 0.9;
+                    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.11);
+                }
+            }
+            .sure-btn{
+                background-color: @colorA;
+            }
+            .cancel-btn{
+                background-color: #B0B0B0;
+            }
+        }
+    }
+}

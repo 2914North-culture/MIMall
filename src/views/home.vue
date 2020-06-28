@@ -7,22 +7,24 @@
 </template>
 
 <script>
-import NavHeader from '../components/common/navHeader';
-import NavFooter from '../components/common/navFooter';
+import NavHeader from '../components/common/NavHeader';
+import NavFooter from '../components/common/NavFooter';
 export default {
     name: "home",
     components: {
       'my-nav-header': NavHeader,
-      'my-nav-footer': NavFooter
+      'my-nav-footer': NavFooter,
     },
     data () {
         return {
-            
+
         }
     }
 }
 </script>
 
 <style scoped lang="less">
-
+.home{
+  position: relative;
+}
 </style>
